@@ -1,7 +1,6 @@
 
 import java.text.DecimalFormat;
 import java.util.*;
-import jdk.jshell.TypePrinter;
 
 class Account {
 
@@ -48,7 +47,7 @@ class Account {
         if ((CB - amount) >= 0){ // CB >= amount
             System.out.println("\nTransaction Successfull.");
             calcCurrentWithdraw(amount);
-            System.out.println("New Current Account Balance: " + df1.format(CB));
+            System.out.println("New Current Account Balance: " + df1.format(CB) + "\n");
         }
         else{
             System.err.println("\nInsufficient Balance\n");
@@ -58,6 +57,26 @@ class Account {
     double calcCurrentWithdraw(double amt){
         CB = CB - amt;
         return CB;
+    }
+
+    void getSavingWithdrawInput(){
+        System.out.println("\nCurrent Account Balance: " + df1.format(SB));
+        System.out.print("\nEnter Withdraw Amount: ");
+        double amount = sc.nextDouble();
+
+        if ((SB - amount) >= 0){ // SB >= amount
+            System.out.println("\nTransaction Successfull.");
+            calcSavingWithdraw(amount);
+            System.out.println("New Current Account Balance: " + df1.format(SB) + "\n");
+        }
+        else{
+            System.err.println("\nInsufficient Balance\n");
+        }
+    }
+
+    double calcSavingWithdraw(double amt){
+        SB = SB + amt;
+        return SB;
     }
 }
 
@@ -145,9 +164,11 @@ class OptionMenu extends Account {
                 break;
             case 2:
                 getCurrentWithdrawInput();
+                getAccountType();
                 break;
             case 3:
-                
+                getCurrentDepositInput();
+                getAccountType();
                 break;
             case 4:
                 System.out.println("\nThank you for VISITING");
@@ -177,9 +198,11 @@ class OptionMenu extends Account {
                 break;
             case 2:
                 getSavingWithdrawInput();
+                getAccountType();
                 break;
             case 3:
-                
+                getSavingDepositInput();
+                getAccountType();
                 break;
             case 4:
                 System.out.println("\nThank you for VISITING");
