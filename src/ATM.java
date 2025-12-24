@@ -75,7 +75,23 @@ class Account {
     }
 
     double calcSavingWithdraw(double amt){
-        SB = SB + amt;
+        SB = SB - amt;
+        return SB;
+    }
+
+    void getCurrentDepositInput(){
+
+    }
+
+    double calcCurrentDeposit(double amt){
+        return CB;
+    }
+
+    void getSavingDepositInput(){
+
+    }
+
+    double calcSavingDeposit(double amt){
         return SB;
     }
 }
