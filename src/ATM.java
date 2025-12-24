@@ -1,10 +1,20 @@
 
+import java.text.DecimalFormat;
 import java.util.*;
+import jdk.jshell.TypePrinter;
 
 class Account {
 
+    Scanner sc = new Scanner(System.in);
+
+    DecimalFormat df1 = new DecimalFormat("###,##0.00' Rupee'");
+    DecimalFormat df2 = new DecimalFormat("###,##0.00' Doller'");
+
     private int CN;
     private int PN;
+
+    double CB = 2000;
+    double SB = 1000;
 
     void setCustomerNumber(int cn) { // setter
         CN = cn;
@@ -20,6 +30,34 @@ class Account {
 
     int getPINNumber() { // getter
         return PN;
+    }
+
+    void getCurrentBalance(){
+        System.out.println("\nCurrent Account Balance: " + df1.format(CB));
+    }
+
+    void getSavingBalance(){
+        System.out.println("\nSaving Account Balance: " + df2.format(SB));
+    }
+
+    void getCurrentWithdrawInput(){
+        System.out.println("\nCurrent Account Balance: " + df1.format(CB));
+        System.out.print("\nEnter Withdraw Amount: ");
+        double amount = sc.nextDouble();
+
+        if ((CB - amount) >= 0){ // CB >= amount
+            System.out.println("\nTransaction Successfull.");
+            calcCurrentWithdraw(amount);
+            System.out.println("New Current Account Balance: " + df1.format(CB));
+        }
+        else{
+            System.err.println("\nInsufficient Balance\n");
+        }
+    }
+
+    double calcCurrentWithdraw(double amt){
+        CB = CB - amt;
+        return CB;
     }
 }
 
@@ -102,10 +140,11 @@ class OptionMenu extends Account {
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                
+                getCurrentBalance();
+                getAccountType();
                 break;
             case 2:
-                
+                getCurrentWithdrawInput();
                 break;
             case 3:
                 
@@ -133,10 +172,11 @@ class OptionMenu extends Account {
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                
+                getSavingBalance();
+                getAccountType();
                 break;
             case 2:
-                
+                getSavingWithdrawInput();
                 break;
             case 3:
                 
