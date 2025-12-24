@@ -92,11 +92,65 @@ class OptionMenu extends Account {
     }
 
     void getCurrent(){
+        System.out.println("\nCURRENT ACCOUNT");
+        System.out.println("\nType 1: Balance Enquiry");
+        System.out.println("Type 2: Withdraw Money");
+        System.out.println("Type 3: Deposit Money");
+        System.out.println("Type 4: Exit");
+        System.out.print("\nChoice: ");
 
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                System.out.println("\nThank you for VISITING");
+                System.out.println("VISIT AGAIN\n");
+                break;
+            default:
+                System.err.println("\nInvalid Choice");
+                System.out.println("Enter the VALID CHOICE");
+                getCurrent(); // Recursion
+                break;
+        }
     }
 
     void getSaving(){
-        
+        System.out.println("\nSAVING ACCOUNT");
+        System.out.println("\nType 1: Balance Enquiry");
+        System.out.println("Type 2: Withdraw Money");
+        System.out.println("Type 3: Deposit Money");
+        System.out.println("Type 4: Exit");
+        System.out.print("\nChoice: ");
+
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                System.out.println("\nThank you for VISITING");
+                System.out.println("VISIT AGAIN\n");
+                break;
+            default:
+                System.err.println("\nInvalid Choice");
+                System.out.println("Enter the VALID CHOICE");
+                getSaving(); // Recursion
+                break;
+        }
     }
 }
 
