@@ -60,14 +60,14 @@ class Account {
     }
 
     void getSavingWithdrawInput(){
-        System.out.println("\nCurrent Account Balance: " + df1.format(SB));
+        System.out.println("\nSaving Account Balance: " + df2.format(SB));
         System.out.print("\nEnter Withdraw Amount: ");
         double amount = sc.nextDouble();
 
         if ((SB - amount) >= 0){ // SB >= amount
             System.out.println("\nTransaction Successfull.");
             calcSavingWithdraw(amount);
-            System.out.println("New Current Account Balance: " + df1.format(SB) + "\n");
+            System.out.println("New Saving Account Balance: " + df2.format(SB) + "\n");
         }
         else{
             System.err.println("\nInsufficient Balance\n");
@@ -80,18 +80,44 @@ class Account {
     }
 
     void getCurrentDepositInput(){
+        System.out.print("\nEnter Deposit Amount: ");
 
+        try{ 
+            double amount = sc.nextDouble();
+            
+            calcCurrentDeposit(amount);
+
+            System.out.println("\nTransaction Successfull.");
+            System.out.println("New Current Account Balance: " + df1.format(CB) + "\n");
+        }
+        catch (InputMismatchException e){
+            System.err.println("\nAmount needs to be Numerical\n");
+        }
     }
 
     double calcCurrentDeposit(double amt){
+        CB = CB + amt;
         return CB;
     }
 
     void getSavingDepositInput(){
+        System.out.print("\nEnter Deposit Amount: ");
 
+        try{ 
+            double amount = sc.nextDouble();
+            
+            calcSavingDeposit(amount);
+
+            System.out.println("\nTransaction Successfull.");
+            System.out.println("New Saving Account Balance: " + df2.format(SB) + "\n");
+        }
+        catch (InputMismatchException e){
+            System.err.println("\nAmount needs to be Numerical\n");
+        }
     }
 
     double calcSavingDeposit(double amt){
+        SB = SB + amt;
         return SB;
     }
 }
